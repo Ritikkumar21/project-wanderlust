@@ -15,7 +15,7 @@
 //     price:Number,
 //     location:String,
 //     country:String,
-// });
+// });  
 
 // const Listing=mongoose.model("Listing",listingSchema);
 // module.exports=Listing;
