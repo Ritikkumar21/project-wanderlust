@@ -376,6 +376,19 @@ const sampleListings = [
       country: "Bhupendra Jogi",
       catagory: "Tower",
     },
+    {
+      title: "Home",
+      description:
+        "Escape to a secluded beach house on the Pacific coast of Costa Rica. Surf, relax, and unwind.",
+        image:{
+          filename: "listingImage",
+          url: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      },
+      price: 5000,
+      location: "Costa Rica",
+      country: "Bhupendra Jogi",
+      catagory: "Tower",
+    },
   ];
   
   module.exports = { data: sampleListings };

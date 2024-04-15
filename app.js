@@ -93,11 +93,28 @@ app.get("/listings/:id/edit",wrapAsync(async (req,res)=>{
 }));
 
 
-app.put("/listings/:id",validateListing,wrapAsync(async (req,res)=>{
-    let {id}=req.params;
-    await Listing.findByIdAndUpdate(id,{...req.body.listing});
+// app.put("/listings/:id",validateListing,wrapAsync(async (req,res)=>{
+//     let {id}=req.params;
+//     await Listing.findByIdAndUpdate(id,{...req.body.listing});
+//     res.redirect(`/listings/${id}`);
+// }));
+
+app.put("/:id",validateListing,wrapAsync(async (req, res, next) => {
+    let {id} = req.params;
+    let {title, image, description, location, country, price}  = req.body.listing;
+    
+    let newL = await Listing.findByIdAndUpdate(id, {
+        title:title,
+        description:description,
+        location:location,
+        country:country,
+        price:price,
+        'image.url' :image
+    }, {new:true});
+    console.log(newL);
     res.redirect(`/listings/${id}`);
-}));
+    })
+);
 
 app.delete("/listings/:id",wrapAsync(async (req,res)=>{
     let {id}=req.params;
