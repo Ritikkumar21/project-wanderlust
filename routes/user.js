@@ -30,14 +30,15 @@ let{username,email,password}=req.body;
 })
 );
 
-router.get("/login",saveRedirectUrl,(req,res)=>{
+router.get("/login",(req,res)=>{
     res.render("users/login.ejs");
 }); 
 
 // --------
-router.post("/login", passport.authenticate("local", { failureRedirect: '/login', failureFlash: true }), async (req, res) => {
+router.post("/login", saveRedirectUrl, passport.authenticate("local", { failureRedirect: '/login', failureFlash: true }), async (req, res) => {
     req.flash("success", "Welcome back to wanderlust!");
-    res.redirect(res.locals.redirectUrl);
+    let redirectUrl = res.locals.redirectUrl || "/listings";
+    res.redirect(redirectUrl);
 });     
 
 router.get("/logout",(req,res,next)=>{
